@@ -10,20 +10,20 @@
     </div>
     {{- if not .Site.Params.disableSearch}}
         <div class="searchbox">
-		    <label for="search-by"><i class="fa fa-search"></i></label>
-		    <input data-search-input id="search-by" type="text" placeholder="{{T "Search-placeholder"}}">
-		    <span data-search-clear=""><i class="fa fa-close"></i></span>
-		</div>
-		<script type="text/javascript" src="{{"js/lunr.min.js" | relURL}}"></script>
-		<script type="text/javascript" src="{{"js/auto-complete.js" | relURL}}"></script>
-		<script type="text/javascript">
+                    <label for="search-by"><i class="fa fa-search"></i></label>
+                    <input data-search-input id="search-by" type="text" placeholder="{{T "Search-placeholder"}}">
+                    <span data-search-clear=""><i class="fa fa-close"></i></span>
+                </div>
+                <script type="text/javascript" src="{{"js/lunr.min.js" | relURL}}"></script>
+                <script type="text/javascript" src="{{"js/auto-complete.js" | relURL}}"></script>
+                <script type="text/javascript">
         {{ if .Site.IsMultiLingual }}
             var baseurl = "{{.Site.BaseURL}}{{.Site.LanguagePrefix}}";
         {{ else }}
             var baseurl = "{{.Site.BaseURL}}";
         {{ end }}
-		</script>
-		<script type="text/javascript" src="{{"js/search.js" | relURL}}"></script>
+                </script>
+                <script type="text/javascript" src="{{"js/search.js" | relURL}}"></script>
     {{- end}}
   </div>
 
@@ -33,10 +33,10 @@
             <a href="{{"/" | relLangURL}}"><i class="fa fa-fw fa-home"></i></a>
             </li>
         {{- end}}
-		
-		{{- partial "menu.html" . }}
-		
-		{{- with .Site.Menus.shortcuts}}
+                
+                {{- partial "menu.html" . }}
+                
+                {{- with .Site.Menus.shortcuts}}
         <section id="shortcuts">
             {{- range sort . "Weight"}}
                 <li class="" role="">
@@ -51,7 +51,7 @@
             <a id="clear-history" class="" href="#" data-clear-history-toggle=""><i class="fa  fa-history"></i> {{T "Clear-History"}}</a>
         {{- end}}
 
-		{{- end}}
+                {{- end}}
 
     <hr />
     <li>{{- partial "language-selector.html" . }}</li>
@@ -120,7 +120,7 @@
 
 {{define "breadcrumb"}}
 {{ if .page.Parent}}
-{{$value := (printf "<a href='%s'>%s</a> > %s" .page.Parent.URL .page.Parent.Title .value)}}
+{{$value := (printf "<a href='%s'>%s</a> > %s" .page.Parent.RelPermalink .page.Parent.Title .value)}}
 {{ template "breadcrumb" dict "page" .page.Parent "value" $value }} 
 {{else}}
  {{.value|safeHTML}}
